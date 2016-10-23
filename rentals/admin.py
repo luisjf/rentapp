@@ -1,3 +1,5 @@
 from django.contrib import admin
+from models import Tenant, Contract, Local, Payment, Property
 
-# Register your models here.
+myModels = [Tenant, Contract, Local, Payment, Property]
+admin.site.register(myModels)
