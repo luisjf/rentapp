@@ -136,7 +136,7 @@ class PaymentDetailSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'contract',
-            'payment_day',
+            'payment_date',
             'way_to_pay',
             'number',
             'detail'
@@ -147,7 +147,7 @@ class PaymentCreateUpdateSerializer(serializers.ModelSerializer):
         model = Payment
         fields = [
             'contract',
-            'payment_day',
+            'payment_date',
             'way_to_pay',
             'number',
             'detail'
