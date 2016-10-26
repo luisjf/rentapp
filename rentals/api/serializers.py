@@ -23,19 +23,19 @@ class TenantSerializer(serializers.ModelSerializer):
 class PropertySerializer(serializers.ModelSerializer):
     class Meta:
         model = Property
-        fields = ()
+        fields = ('name', 'address')
 
 class LocalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Local
-        fields = ()
+        fields = ('property', 'name', 'area_total', 'aliquot')
 
 class ContractSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contract
-        fields = ()
+        fields = ('tenant', 'local', 'property', 'issue_date', 'due_date', 'payment_day', 'payment_due_day')
 
 class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Payment
-        fields = ()
+        fields = ('contract', 'payment_day', 'way_to_pay', 'number', 'detail')
