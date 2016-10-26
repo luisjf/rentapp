@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 
 from rentals.models import Tenant, Property, Local, Contract, Payment
 from .serializers import TenantSerializer, PropertySerializer, LocalSerializer, ContractSerializer, PaymentSerializer
@@ -6,6 +6,11 @@ from .serializers import TenantSerializer, PropertySerializer, LocalSerializer, 
 class TenantListAPIView(ListAPIView):
     queryset = Tenant.objects.all()
     serializer_class = TenantSerializer
+
+class TenantDetailAPIView(RetrieveAPIView):
+    queryset = Tenant.objects.all()
+    serializer_class = TenantSerializer
+
 
 class PropertyListAPIView(ListAPIView):
     queryset = Property.objects.all()

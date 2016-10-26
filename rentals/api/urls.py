@@ -3,6 +3,8 @@ from django.contrib import admin
 
 from rentals.api.views import (
     TenantListAPIView,
+    TenantDetailAPIView,
+
     PropertyListAPIView,
     LocalListAPIView,
     ContractListAPIView,
@@ -10,7 +12,10 @@ from rentals.api.views import (
 )
 
 urlpatterns = [
-    url(r'^tenant/$', TenantListAPIView.as_view()),
+    url(r'^tenant/$', TenantListAPIView.as_view(), name='list'),
+    url(r'^tenant/(?P<pk>)\d/$', TenantDetailAPIView.as_view(), name='detail'),
+
+
     url(r'^property/$', PropertyListAPIView.as_view()),
     url(r'^local/$', LocalListAPIView.as_view()),
     url(r'^contract/$', ContractListAPIView.as_view()),
