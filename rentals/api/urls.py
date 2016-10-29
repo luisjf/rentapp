@@ -66,3 +66,4 @@ urlpatterns = [
     url(r'^payment/(?P<pk>[\w-]+)/edit/$', PaymentUpdateAPIView.as_view(), name='update'),
     url(r'^payment/(?P<pk>[\w-]+)/delete/$', PaymentDeleteAPIView.as_view(), name='delete'),
 ]
+    

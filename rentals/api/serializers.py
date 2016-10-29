@@ -77,6 +77,7 @@ class PropertyCreateUpdateSerializer(serializers.ModelSerializer):
 #LOCAL serializers
 
 class LocalDetailSerializer(serializers.ModelSerializer):
+    property = PropertyDetailSerializer()
     class Meta:
         model = Local
         fields = [
