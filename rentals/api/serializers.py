@@ -77,7 +77,7 @@ class PropertyCreateUpdateSerializer(serializers.ModelSerializer):
 #LOCAL serializers
 
 class LocalDetailSerializer(serializers.ModelSerializer):
-    property = PropertyDetailSerializer()
+    property = serializers.SerializerMethodField()
     class Meta:
         model = Local
         fields = [
@@ -87,6 +87,8 @@ class LocalDetailSerializer(serializers.ModelSerializer):
             'area_total',
             'aliquot'
             ]
+    def get_property(self, obj):
+        return str(obj.property.name)
 
 class LocalCreateUpdateSerializer(serializers.ModelSerializer):
     class Meta:
@@ -102,6 +104,9 @@ class LocalCreateUpdateSerializer(serializers.ModelSerializer):
 #CONTRACT serializers
 
 class ContractDetailSerializer(serializers.ModelSerializer):
+    property = serializers.SerializerMethodField()
+    local = serializers.SerializerMethodField()
+    tenant = serializers.SerializerMethodField()
     class Meta:
         model = Contract
         fields = [
@@ -114,6 +119,12 @@ class ContractDetailSerializer(serializers.ModelSerializer):
             'payment_day',
             'payment_due_day'
             ]
+    def get_property(self, obj):
+        return str(obj.property.name)
+    def get_local(self, obj):
+        return str(obj.local.name)
+    def get_tenant(self, obj):
+        return str(obj.tenant.first_name + obj.tenant.last_name)
 
 class ContractCreateUpdateSerializer(serializers.ModelSerializer):
     class Meta:
